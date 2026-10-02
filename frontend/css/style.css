@@ -1,0 +1,71 @@
+/* Your custom styles go here.
+   Use Bootstrap classes first, and write your own CSS only when you need to. */
+
+/* ========================================
+   General
+======================================== */
+
+body {
+    background-color: #f8f9fa;
+}
+
+
+/* ========================================
+   Summary Cards
+   CSS Grid
+======================================== */
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+
+/* ========================================
+   Expenses Header
+======================================== */
+
+.expenses-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+}
+
+
+/* ========================================
+   Responsive Design
+   Mobile
+======================================== */
+
+@media (max-width: 767px) {
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .expenses-header {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .expenses-header select {
+        width: 100%;
+    }
+
+
+    .table {
+        min-width: 700px;
+    }
+
+}
+
