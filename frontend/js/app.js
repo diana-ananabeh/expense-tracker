@@ -78,11 +78,17 @@ function hideSpinner() {
 
 function showAlert(message, type = "danger") {
 
+    // Show alert message
     alertArea.innerHTML = `
         <div class="alert alert-${type}" role="alert">
             ${message}
         </div>
     `;
+
+    // Hide alert automatically after 3 seconds
+    setTimeout(function () {
+        alertArea.innerHTML = "";
+    }, 3000);
 
 }
 
@@ -111,6 +117,7 @@ async function getExpenses() {
         return data;
 
     }
+
 
     catch (error) {
 
@@ -173,6 +180,7 @@ async function addExpense(data) {
         return true;
 
     }
+
 
     catch (error) {
 
@@ -239,6 +247,7 @@ async function updateExpense(id, data) {
 
     }
 
+
     catch (error) {
 
         console.error("PUT expense error:", error);
@@ -295,6 +304,7 @@ async function deleteExpense(id) {
         return true;
 
     }
+
 
     catch (error) {
 
@@ -363,6 +373,7 @@ function renderTable(list) {
             </tr>
         `;
 
+
         return;
 
     }
@@ -384,7 +395,17 @@ function renderTable(list) {
             </td>
 
             <td>
-                <span class="badge bg-secondary">
+                <span class="badge ${
+                    expense.category === "Food"
+                        ? "bg-success"
+                        : expense.category === "Transport"
+                        ? "bg-primary"
+                        : expense.category === "Bills"
+                        ? "bg-warning text-dark"
+                        : expense.category === "Entertainment"
+                        ? "bg-info text-dark"
+                        : "bg-secondary"
+                }">
                     ${expense.category}
                 </span>
             </td>
